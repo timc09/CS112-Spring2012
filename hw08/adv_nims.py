@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import string
 
 ###################### 
 #  Helper Functions
@@ -6,13 +7,15 @@
 
 def splitparts(s):
     "split_ints takes a string and returns all chunks.  Chunks are any space separated or comma separated values"
-    
+    s.split(',')
+    return s
 def a2idx(c):
     "converts a letter to it's index value"
+    return string.ascii_lowercase.index(c.lower())
 
 def idx2a(i):
     "converts an index to it's letter value"
-
+    return string.ascii_uppercase[i]
 ##############################################
 # Object Functions
 #    functions relating to moves and stones
@@ -27,6 +30,14 @@ def parse_stones(s):
     >>> parse_stones("0 200 4 5")
     [99, 4 5]
     """
+    out = []
+    for i in s:
+        if i > 0:
+            if i > 99:
+                i = 99
+            out.append(i)
+    return i
+
 
 # moves are [pile, amount] => [int, int]
 
@@ -38,6 +49,9 @@ def parse_move(s):
     >>> parse_move("this isn't valid")
     None
     """
+    first = a2idx(s[0])
+    second = s[1]
+    return [first,second]
 
 def valid_move(mv, piles):
     """check if a given move can actually be completed
@@ -51,8 +65,11 @@ def valid_move(mv, piles):
     >>> valid_move([20,2], [3,3])
     False
     """
-
-
+    if piles[mv[0]] <= piles[1]:
+        return True
+    else:
+        return False
+    
 def move(mv, piles):
     "perform a move"
 

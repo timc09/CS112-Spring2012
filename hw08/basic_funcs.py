@@ -11,7 +11,8 @@
 #   >>> greeter("WORLD")
 #   hello, world
 
-# def greeter(name):
+def greeter(name):
+    print 'hello,', str(name).lower()
 
 
 # Draw a box
@@ -50,5 +51,6 @@
 #       | |
 #       | |
 
-# def tree()
-
+def tree(x,y):
+    #return '    *\n    ^\n   ^-^\n  ^-^-^\n ^-^-^-^\n^-^-^-^-^\n   | |\n   | |'
+    return x,y
