@@ -27,19 +27,14 @@ def distance(a, b):
 #     [0.25, 0.25, 0.25, 0.25]
 
 def normalize(vec):
-    output = []
     total = 0.0
     for i in vec:
-        total += i
+        total += (i*i)
     if(total != 0):
-        total = 0.0
-        for i in vec:
-            total += (i*i)
-            print total
-            print i
+        output = []
         length = math.sqrt(total)
-        for i in vec:
-            output.append(vec[i]/length)
+        for j in vec:
+            output.append(j/length)
     else:
         output = vec
     return output

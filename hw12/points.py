@@ -1,3 +1,4 @@
+from math import *
 # Point Object
 # =====================================
 # Create a Point point class.  Point objects, when created, look like this:
@@ -30,7 +31,47 @@
 #    >>> print a.distance(b)
 #    5
 #
+class Point(object):
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
 
+    def distance(self,other):
+        return sqrt((self.x - other.x)**2 + (self.y - other.y)**2)
+
+    def move(self,x,y):
+        self.x = x
+        self.y = y
+
+    def translate(self, x, y):
+        self.x = self.x + x
+        self.y = self.y + y
+
+    def slope(self,other):
+        m = 0
+        dx = self.x - other.x
+        dy = self.y - other.y
+        if dx != 0:
+            m = float(dy)/dx
+        else:
+            m = None
+        return m
+
+    def extrapolate(self,m,dist):
+        if m is not None:
+            theta = atan(m)
+            y = sin(theta)*dist + self.y
+            x = cos(theta)*dist + self.x
+        else:
+            x = self.x
+            y = self.y + dist
+        return(Point(x,y))
+    
+    def __eq__(self,other):
+        return isinstance(other, Point) and other.x == self.x and other.y == self.y 
+        
+    def __str__(self):
+        return '('+str(self.x)+','+str(self.y)+')'
 
 # Advanced Section:
 # ---------------------------------------

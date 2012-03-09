@@ -31,7 +31,18 @@ def greeter(name):
 #    | |
 #    +-+
 
-# def box(w,h):
+def box(w,h):
+    if (isinstance(w,int) and w>0) and (isinstance(h,int) and h>0):
+        for y in range(h):
+            if y > 0 and y < h-1:
+                print '|' + ' '*(w-2) + '|'
+            else:
+                if w > 1:
+                    print '+' + '-'*(w-2) + '+'
+                else:
+                    print'+'
+    else:
+        print 'Error: Invalid Dimensions'
 
 
 
@@ -51,6 +62,5 @@ def greeter(name):
 #       | |
 #       | |
 
-def tree(x,y):
-    #return '    *\n    ^\n   ^-^\n  ^-^-^\n ^-^-^-^\n^-^-^-^-^\n   | |\n   | |'
-    return x,y
+#def tree(x,y):
+   
